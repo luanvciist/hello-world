@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="config" />
+	<constant name="struts.action.excludePattern" value="/ckfinder.*"></constant>
+	<constant name="struts.multipart.maxSize" value="200000000" />
+	
+	<package name="default" extends="struts-default" namespace="/">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult">
+			</result-type>
+		</result-types>
+
+		<!--ProductAction - Admin-->
+		<action name="index"
+			class="com.viettel.mykid.action.ProductAction" method="execute">
+			<result name="success">index.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="introduce"
+			class="com.viettel.mykid.action.ProductAction" method="getProductInfo">
+			<result name="success" type="tiles">introduce.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateIntroduce"
+			class="com.viettel.mykid.action.ProductAction" method="updateIntroduce">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">introduce.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">introduce</result>
+		</action>
+		<action name="advantage"
+			class="com.viettel.mykid.action.ProductAction" method="getProductInfo">
+			<result name="success" type="tiles">advantage.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateAdvantage"
+			class="com.viettel.mykid.action.ProductAction" method="updateAdvantage">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">advantage.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">advantage</result>
+		</action>
+		<action name="specification"
+			class="com.viettel.mykid.action.ProductAction" method="getProductInfo">
+			<result name="success" type="tiles">specification.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateSpecification"
+			class="com.viettel.mykid.action.ProductAction" method="updateSpecification">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">specification.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">specification</result>
+		</action>
+		
+		<!--ProductAction - Manager-->
+		<action name="introduceMng"
+			class="com.viettel.mykid.action.ProductAction" method="getProductInfo">
+			<result name="success" type="tiles">introduceMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateIntroduceMng"
+			class="com.viettel.mykid.action.ProductAction" method="updateIntroduce">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">introduceMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">introduceMng</result>
+		</action>
+				
+		<!--LoginAction -->
+		<action name="login"
+			class="com.viettel.mykid.action.LoginAction" method="execute">
+			<result name="success">login.jsp</result>
+		</action>
+		<action name="doLogin"
+			class="com.viettel.mykid.action.LoginAction" method="doLogin">
+			<result name="admin" type="tiles">admin.success</result>
+			<result name="manager" type="tiles">manager.success</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="doLogout"
+			class="com.viettel.mykid.action.LoginAction" method="doLogout">
+			<result name="success">login.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+
+		<!--BannerAction -->
+		<action name="banner"
+			class="com.viettel.mykid.action.BannerAction" method="execute">
+			<result name="success" type="tiles">banner.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateBanner"
+			class="com.viettel.mykid.action.BannerAction" method="update">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">banner.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">banner</result>
+		</action>
+
+		<!--BodyAction -->
+		<action name="body"
+			class="com.viettel.mykid.action.BodyAction" method="execute">
+			<result name="success" type="tiles">body.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="viewBodyDetail"
+			class="com.viettel.mykid.action.BodyAction" method="viewBodyDetail">
+			<result name="success" type="tiles">body.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="updateBody"
+			class="com.viettel.mykid.action.BodyAction" method="updateBody">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">body.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">body</result>
+		</action>
+		
+		<!--SliderAction - Admin-->
+		<action name="slider"
+			class="com.viettel.mykid.action.SliderAction" method="execute">
+			<result name="success" type="tiles">slider.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addSlider"
+			class="com.viettel.mykid.action.SliderAction" method="addSlider">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">slider.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">slider</result>
+		</action>
+		<action name="updateSlider"
+			class="com.viettel.mykid.action.SliderAction" method="updateSlider">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">slider.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">slider</result>
+		</action>
+		<action name="viewSliderDetail"
+			class="com.viettel.mykid.action.SliderAction" method="viewSliderDetail">
+			<result name="success" type="tiles">slider.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteSlider"
+			class="com.viettel.mykid.action.SliderAction" method="deleteSlider">
+			<result name="success" type="tiles">slider.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--SliderAction - Manager-->
+		<action name="sliderMng"
+			class="com.viettel.mykid.action.SliderAction" method="execute">
+			<result name="success" type="tiles">sliderMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addSliderMng"
+			class="com.viettel.mykid.action.SliderAction" method="addSlider">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">sliderMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">sliderMng</result>
+		</action>
+		<action name="updateSliderMng"
+			class="com.viettel.mykid.action.SliderAction" method="updateSlider">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">sliderMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">sliderMng</result>
+		</action>
+		<action name="viewSliderDetailMng"
+			class="com.viettel.mykid.action.SliderAction" method="viewSliderDetail">
+			<result name="success" type="tiles">sliderMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteSliderMng"
+			class="com.viettel.mykid.action.SliderAction" method="deleteSlider">
+			<result name="success" type="tiles">sliderMng.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--ColorAction -->
+		<action name="color"
+			class="com.viettel.mykid.action.ColorAction" method="execute">
+			<result name="success" type="tiles">color.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addColor"
+			class="com.viettel.mykid.action.ColorAction" method="addColor">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">color.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">color</result>
+		</action>
+		<action name="updateColor"
+			class="com.viettel.mykid.action.ColorAction" method="updateColor">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">color.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">color</result>
+		</action>
+		<action name="viewColorDetail"
+			class="com.viettel.mykid.action.ColorAction" method="viewColorDetail">
+			<result name="success" type="tiles">color.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteColor"
+			class="com.viettel.mykid.action.ColorAction" method="deleteColor">
+			<result name="success" type="tiles">color.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--StructureAction -->
+		<action name="structure"
+			class="com.viettel.mykid.action.StructureAction" method="execute">
+			<result name="success" type="tiles">structure.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addStructure"
+			class="com.viettel.mykid.action.StructureAction" method="addStructure">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">structure.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">structure</result>
+		</action>
+		<action name="updateStructure"
+			class="com.viettel.mykid.action.StructureAction" method="updateStructure">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">structure.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">structure</result>
+		</action>
+		<action name="viewStructureDetail"
+			class="com.viettel.mykid.action.StructureAction" method="viewStructureDetail">
+			<result name="success" type="tiles">structure.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteStructure"
+			class="com.viettel.mykid.action.StructureAction" method="deleteStructure">
+			<result name="success" type="tiles">structure.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--DownloadAction -->
+		<action name="download"
+			class="com.viettel.mykid.action.DownloadAction" method="execute">
+			<result name="success" type="tiles">download.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addDownload"
+			class="com.viettel.mykid.action.DownloadAction" method="addDownload">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">download.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">download</result>
+		</action>
+		<action name="updateDownload"
+			class="com.viettel.mykid.action.DownloadAction" method="updateDownload">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">download.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">download</result>
+		</action>
+		<action name="viewDownloadDetail"
+			class="com.viettel.mykid.action.DownloadAction" method="viewDownloadDetail">
+			<result name="success" type="tiles">download.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteDownload"
+			class="com.viettel.mykid.action.DownloadAction" method="deleteDownload">
+			<result name="success" type="tiles">download.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--PackageAction -->
+		<action name="package"
+			class="com.viettel.mykid.action.PackageAction" method="execute">
+			<result name="success" type="tiles">package.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addPackage"
+			class="com.viettel.mykid.action.PackageAction" method="addPackage">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">package.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">package</result>
+		</action>
+		<action name="updatePackage"
+			class="com.viettel.mykid.action.PackageAction" method="updatePackage">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">package.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">package</result>
+		</action>
+		<action name="viewPackageDetail"
+			class="com.viettel.mykid.action.PackageAction" method="viewPackageDetail">
+			<result name="success" type="tiles">package.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deletePackage"
+			class="com.viettel.mykid.action.PackageAction" method="deletePackage">
+			<result name="success" type="tiles">package.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--FeatureAction -->
+		<action name="feature"
+			class="com.viettel.mykid.action.FeatureAction" method="execute">
+			<result name="success" type="tiles">feature.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addFeature"
+			class="com.viettel.mykid.action.FeatureAction" method="addFeature">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">feature.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">feature</result>
+		</action>
+		<action name="updateFeature"
+			class="com.viettel.mykid.action.FeatureAction" method="updateFeature">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">feature.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">feature</result>
+		</action>
+		<action name="viewFeatureDetail"
+			class="com.viettel.mykid.action.FeatureAction" method="viewFeatureDetail">
+			<result name="success" type="tiles">feature.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteFeature"
+			class="com.viettel.mykid.action.FeatureAction" method="deleteFeature">
+			<result name="success" type="tiles">feature.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+		<!--GuidelineAction -->
+		<action name="guideline"
+			class="com.viettel.mykid.action.GuidelineAction" method="execute">
+			<result name="success" type="tiles">guideline.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="addGuideline"
+			class="com.viettel.mykid.action.GuidelineAction" method="addGuideline">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">guideline.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">guideline</result>
+		</action>
+		<action name="updateGuideline"
+			class="com.viettel.mykid.action.GuidelineAction" method="updateGuideline">
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success" type="tiles">guideline.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+			<result name="invalid.token" type="redirectAction">guideline</result>
+		</action>
+		<action name="viewGuidelineDetail"
+			class="com.viettel.mykid.action.GuidelineAction" method="viewGuidelineDetail">
+			<result name="success" type="tiles">guideline.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		<action name="deleteGuideline"
+			class="com.viettel.mykid.action.GuidelineAction" method="deleteGuideline">
+			<result name="success" type="tiles">guideline.success</result>
+			<result name="login">login.jsp</result>
+			<result name="error">failure.jsp</result>
+		</action>
+		
+	</package>
+</struts>

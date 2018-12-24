@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+ <!-- Admin layout -->
+  <definition name="adminLayout" template="/advance-admin/adminLayout.jsp">
+      <put-attribute name="title" value="Template"/>
+      <put-attribute name="header" value="Template"/>
+      <put-attribute name="menu" value=""/>
+      <put-attribute name="contentRight" value="" />
+  </definition>
+  
+  <!-- Login -->
+  <definition name="admin.success" extends="adminLayout">
+      <put-attribute name="title" value="Welcome Admin"/>
+      <put-attribute name="header" value="Welcome Admin"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/welcome.jsp"/>      
+  </definition> 
+  <definition name="manager.success" extends="adminLayout">
+      <put-attribute name="title" value="Welcome Manager"/>
+      <put-attribute name="header" value="Welcome Manager"/>
+      <put-attribute name="menu" value="/advance-admin/manager.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/welcome.jsp"/>      
+  </definition>
+  
+  <!-- Banner -->
+   <definition name="banner.success" extends="adminLayout">
+      <put-attribute name="title" value="Banner"/>
+      <put-attribute name="header" value="Banner"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/banner.jsp"/>      
+  </definition>
+  
+   <!-- Body -->
+   <definition name="body.success" extends="adminLayout">
+      <put-attribute name="title" value="Body"/>
+      <put-attribute name="header" value="Body"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/body.jsp"/>      
+  </definition>
+  
+  <!-- Slider - Admin-->
+   <definition name="slider.success" extends="adminLayout">
+      <put-attribute name="title" value="Slider"/>
+      <put-attribute name="header" value="Slider"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/slider.jsp"/>      
+  </definition>
+  
+  <!-- Slider - Manager-->
+   <definition name="sliderMng.success" extends="adminLayout">
+      <put-attribute name="title" value="Slider"/>
+      <put-attribute name="header" value="Slider"/>
+      <put-attribute name="menu" value="/advance-admin/manager.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/slider.jsp"/>      
+  </definition>
+ 
+  
+  <!-- Color -->
+  <definition name="color.success" extends="adminLayout">
+      <put-attribute name="title" value="Color"/>
+      <put-attribute name="header" value="Color"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/color.jsp"/>      
+  </definition>
+  
+  <!-- Structure -->
+  <definition name="structure.success" extends="adminLayout">
+      <put-attribute name="title" value="Structure"/>
+      <put-attribute name="header" value="Structure"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/structure.jsp"/>      
+  </definition>
+  
+  <!-- Download -->
+  <definition name="download.success" extends="adminLayout">
+      <put-attribute name="title" value="Download"/>
+      <put-attribute name="header" value="Download"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/download.jsp"/>      
+  </definition>
+  
+  <!-- Product - Admin-->
+  <definition name="introduce.success" extends="adminLayout">
+      <put-attribute name="title" value="Introduce"/>
+      <put-attribute name="header" value="Introduce"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/introduce.jsp"/>      
+  </definition> 
+  <definition name="advantage.success" extends="adminLayout">
+      <put-attribute name="title" value="Advantage"/>
+      <put-attribute name="header" value="Advantage"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/advantage.jsp"/>      
+  </definition> 
+  <definition name="specification.success" extends="adminLayout">
+      <put-attribute name="title" value="Specification"/>
+      <put-attribute name="header" value="Specification"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/specification.jsp"/>      
+  </definition>
+  
+  <!-- Product - Manager-->
+  <definition name="introduceMng.success" extends="adminLayout">
+      <put-attribute name="title" value="Introduce"/>
+      <put-attribute name="header" value="Introduce"/>
+      <put-attribute name="menu" value="/advance-admin/manager.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/introduce.jsp"/>      
+  </definition> 
+  
+  <!-- Package -->
+  <definition name="package.success" extends="adminLayout">
+      <put-attribute name="title" value="Package"/>
+      <put-attribute name="header" value="Package"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/package.jsp"/>      
+  </definition> 
+  
+  <!-- Feature -->
+  <definition name="feature.success" extends="adminLayout">
+      <put-attribute name="title" value="Feature"/>
+      <put-attribute name="header" value="Feature"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/feature.jsp"/>      
+  </definition> 
+  
+   <!-- Guideline -->
+  <definition name="guideline.success" extends="adminLayout">
+      <put-attribute name="title" value="Guideline"/>
+      <put-attribute name="header" value="Guideline"/>
+      <put-attribute name="menu" value="/advance-admin/admin.jsp"/>
+      <put-attribute name="contentRight" value="/admin-pages/guideline.jsp"/>      
+  </definition> 
+  
+</tiles-definitions>
